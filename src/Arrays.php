@@ -61,10 +61,11 @@ class Arrays
     /**
      * Flatten a multidimensional array.
      *
-     * @param array $array
+     * @see https://stackoverflow.com/a/1320112
+     * @param array|mixed $array
      * @return array
      */
-    public static function flatten(array $array) {
+    public static function flatten($array) {
         if (!is_array($array)) {
             // nothing to do if it's not an array
             return array($array);
