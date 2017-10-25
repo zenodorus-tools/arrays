@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf0b373bcedc8ab624ba8878806c2304",
+    "content-hash": "ea7216de8be9c2b389c3bc70314c3693",
     "packages": [],
     "packages-dev": [
         {
@@ -1515,13 +1515,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alwaysblank/zenodorus.git",
-                "reference": "009e5443ea61c4b606ac6c8100f127167c157503"
+                "url": "https://github.com/zenodorus-tools/core.git",
+                "reference": "b95dd99d3b22fedd12136693f1fe3f2c35f32564"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alwaysblank/zenodorus/zipball/009e5443ea61c4b606ac6c8100f127167c157503",
-                "reference": "009e5443ea61c4b606ac6c8100f127167c157503",
+                "url": "https://api.github.com/repos/zenodorus-tools/core/zipball/b95dd99d3b22fedd12136693f1fe3f2c35f32564",
+                "reference": "b95dd99d3b22fedd12136693f1fe3f2c35f32564",
                 "shasum": ""
             },
             "type": "library",
@@ -1541,10 +1541,10 @@
             ],
             "description": "A collection of all the Zenodorus utilities.",
             "support": {
-                "source": "https://github.com/alwaysblank/zenodorus/tree/master",
-                "issues": "https://github.com/alwaysblank/zenodorus/issues"
+                "source": "https://github.com/zenodorus-tools/core/tree/master",
+                "issues": "https://github.com/zenodorus-tools/core/issues"
             },
-            "time": "2017-10-25T16:45:23+00:00"
+            "time": "2017-10-25T17:07:50+00:00"
         }
     ],
     "aliases": [],

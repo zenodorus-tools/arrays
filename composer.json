@@ -3,9 +3,9 @@
   "description": "Tools for messing with arrays.",
   "homepage": "https://zenodor.us",
   "repositories": {
-      "zenodorus/core": {
+    "zenodorus/core": {
         "type": "vcs",
-        "url": "git@github.com:alwaysblank/zenodorus.git"
+        "url": "git@github.com:zenodorus-tools/core.git"
     }
   },
   "license": "MIT",
