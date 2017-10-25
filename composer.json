@@ -3,10 +3,6 @@
   "description": "Tools for messing with arrays.",
   "homepage": "https://zenodor.us",
   "repositories": {
-      "zenodorus/standards": {
-          "type": "vcs",
-          "url": "git@github.com:alwaysblank/zenodorus-standards.git"
-      },
       "zenodorus/core": {
         "type": "vcs",
         "url": "git@github.com:alwaysblank/zenodorus.git"
@@ -21,12 +17,11 @@
       }
   ],
   "require": {
-      "php": ">=7"
+      "php": ">=7.1"
   },
   "require-dev": {
       "squizlabs/php_codesniffer": "^3.1",
       "zenodorus/core": "dev-master",
-      "zenodorus/standards": "dev-master",
       "phpunit/phpunit": "^6.4"
   },
   "autoload": {
@@ -35,8 +30,8 @@
       }
   },
   "scripts": {
-      "check": ["phpcs --standard=vendor/zenodorus/standards/phpcs.xml src tests"],
-      "fix": ["phpcbf --standard=vendor/zenodorus/standards/phpcs.xml src tests"],
+      "check": ["phpcs --standard=vendor/zenodorus/core/phpcs.xml src tests"],
+      "fix": ["phpcbf --standard=vendor/zenodorus/core/phpcs.xml src tests"],
       "test": ["phpunit"]
   }
 }

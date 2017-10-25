@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "54d4944663e2ef8925826a6716d14a24",
+    "content-hash": "bf0b373bcedc8ab624ba8878806c2304",
     "packages": [],
     "packages-dev": [
         {
@@ -1516,12 +1516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/alwaysblank/zenodorus.git",
-                "reference": "b47f623d2419af47f8c116028e0f58f754cb4adf"
+                "reference": "009e5443ea61c4b606ac6c8100f127167c157503"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alwaysblank/zenodorus/zipball/b47f623d2419af47f8c116028e0f58f754cb4adf",
-                "reference": "b47f623d2419af47f8c116028e0f58f754cb4adf",
+                "url": "https://api.github.com/repos/alwaysblank/zenodorus/zipball/009e5443ea61c4b606ac6c8100f127167c157503",
+                "reference": "009e5443ea61c4b606ac6c8100f127167c157503",
                 "shasum": ""
             },
             "type": "library",
@@ -1544,50 +1544,18 @@
                 "source": "https://github.com/alwaysblank/zenodorus/tree/master",
                 "issues": "https://github.com/alwaysblank/zenodorus/issues"
             },
-            "time": "2017-10-25T01:23:24+00:00"
-        },
-        {
-            "name": "zenodorus/standards",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alwaysblank/zenodorus-standards.git",
-                "reference": "080d28adb756452ff1a767533f49210c82257a80"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alwaysblank/zenodorus-standards/zipball/080d28adb756452ff1a767533f49210c82257a80",
-                "reference": "080d28adb756452ff1a767533f49210c82257a80",
-                "shasum": ""
-            },
-            "type": "library",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Martinez-Bateman",
-                    "email": "ben@alwaysblank.org"
-                }
-            ],
-            "description": "Coding standards for Zenodorus tools.",
-            "support": {
-                "source": "https://github.com/alwaysblank/zenodorus-standards/tree/master",
-                "issues": "https://github.com/alwaysblank/zenodorus-standards/issues"
-            },
-            "time": "2017-10-24T20:00:18+00:00"
+            "time": "2017-10-25T16:45:23+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zenodorus/core": 20,
-        "zenodorus/standards": 20
+        "zenodorus/core": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7"
+        "php": ">=7.1"
     },
     "platform-dev": []
 }
