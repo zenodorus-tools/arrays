@@ -38,6 +38,17 @@ class StringTest extends TestCase
         $this->assertEquals('pluck::not-found', $result->getCode());
     }
 
+    public function testPluckKeyDoesntExistSafe()
+    {
+        $directions = [
+            'star',
+            'gate',
+            'universe',
+        ];
+        $result = Arrays::pluck(self::SAMPLE, $directions, true);
+        $this->assertEquals(null, $result);
+    }
+
     /**
      * @Strings::flatten()
      */
