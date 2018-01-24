@@ -30,7 +30,7 @@ class Arrays
      * Setting $safe to `true` can cause unexpected behavior: Since it returns
      * `null` when it fails, it could theoretically return lead a user to
      * believe they had successfully retrieved an array item that had the
-     * explicity value of `null`. It is therefor recommended to keep $safe off.
+     * explicity value of `null`. It is therefore recommended to keep $safe off.
      *
      * @param array $array                    The array to pluck from.
      * @param array|string|int $directions    Directions to the element we want.
@@ -123,5 +123,29 @@ class Arrays
         }
 
         return true;
+    }
+
+    /**
+     * Remove items from an array based on their value. Keys are not changed.
+     * 
+     * **Does not recurse**, so be wary of using it with multidimentional 
+     * arrays.
+     * 
+     * The values passed to `$values` can be anything that is a valid array
+     * value, but they're matched using `in_array` with `strict = true`.
+     *
+     * @param array $array
+     * @param mixed ...$values
+     * @return array
+     */
+    public static function removeByValue(array $array, ...$values)
+    {
+        foreach ($array as $key => $value) {
+            if (in_array($value, $values, true)) {
+                unset($array[$key]);
+            }
+        }
+
+        return $array;
     }
 }
