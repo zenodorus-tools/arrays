@@ -127,10 +127,10 @@ class Arrays
 
     /**
      * Remove items from an array based on their value. Keys are not changed.
-     * 
-     * **Does not recurse**, so be wary of using it with multidimentional 
+     *
+     * **Does not recurse**, so be wary of using it with multidimentional
      * arrays.
-     * 
+     *
      * The values passed to `$values` can be anything that is a valid array
      * value, but they're matched using `in_array` with `strict = true`.
      *
