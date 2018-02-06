@@ -2,7 +2,7 @@
 
 # Arrays
 
-[![Build Status](https://travis-ci.org/zenodorus-tools/zenodorus-arrays.svg?branch=master)](https://travis-ci.org/zenodorus-tools/zenodorus-arrays)
+[![Build Status](https://travis-ci.org/zenodorus-tools/arrays.svg?branch=master)](https://travis-ci.org/zenodorus-tools/arrays)
 
 Methods for messing with arrays.
 
