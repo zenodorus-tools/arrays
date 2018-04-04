@@ -5,7 +5,7 @@ use \PHPUnit\Framework\TestCase;
 class ArrayTest extends TestCase
 {
     /**
-     * @Strings::pluck()
+     * @Arrays::pluck()
      */
     const SAMPLE = [
         'star' => [
@@ -38,8 +38,19 @@ class ArrayTest extends TestCase
         $this->assertEquals('pluck::not-found', $result->getCode());
     }
 
+    public function testPluckKeyDoesntExistSafe()
+    {
+        $directions = [
+            'star',
+            'gate',
+            'universe',
+        ];
+        $result = Arrays::pluck(self::SAMPLE, $directions, true);
+        $this->assertNull($result);
+    }
+
     /**
-     * @Strings::flatten()
+     * @Arrays::flatten()
      */
 
     public function testFlattenBasic()
@@ -55,7 +66,7 @@ class ArrayTest extends TestCase
     }
 
     /**
-     * @Strings::isEmpty()
+     * @Arrays::isEmpty()
      */
 
     public function testArrayIsEmpty()
@@ -86,12 +97,13 @@ class ArrayTest extends TestCase
         $this->assertFalse(Arrays::isEmpty($test3));
     }
 
+
     public function testArrayCompact()
     {
         $test1 = [
-          'star',
-          'wars',
-          'trek',
+            'star',
+            'wars',
+            'trek',
         ];
         $test2 = [
             'star',
@@ -109,5 +121,97 @@ class ArrayTest extends TestCase
         $this->assertEquals($test1, Arrays::compact($test2), "Did not remove literal `false` value.");
         $this->assertEquals($test1, Arrays::compact($test3), "Did not remove literal `null` value.");
         $this->assertEquals(4, count(Arrays::compact($test3, true)), "Null not accurately considered not false.");
+    }
+
+    /**
+     * @Arrays::removeByValue()
+     */
+
+    public function testRemoveByValueInt()
+    {
+        $array = [1,0,2,4];
+        $result = Arrays::removeByValue($array, 0);
+        $this->assertNotContains(0, $result);
+        $this->assertContains(1, $result);
+        $this->assertContains(2, $result);
+        $this->assertContains(4, $result);
+    }
+    
+    public function testMultipleRemoveByValueInt()
+    {
+        $array = [1,0,2,4];
+        $result = Arrays::removeByValue($array, 0, 4);
+        $this->assertNotContains(0, $result);
+        $this->assertNotContains(4, $result);
+        $this->assertContains(1, $result);
+        $this->assertContains(2, $result);
+    }
+
+    public function testRemoveByValueString()
+    {
+        $array = ['star','wars','trek','gate'];
+        $result = Arrays::removeByValue($array, 'trek');
+        $this->assertNotContains('trek', $result);
+        $this->assertContains('star', $result);
+        $this->assertContains('wars', $result);
+        $this->assertContains('gate', $result);
+    }
+    
+    public function testMultipleRemoveByValueString()
+    {
+        $array = ['star','wars','trek','gate'];
+        $result = Arrays::removeByValue($array, 'trek', 'wars');
+        $this->assertNotContains('trek', $result);
+        $this->assertNotContains('wars', $result);
+        $this->assertContains('star', $result);
+        $this->assertContains('gate', $result);
+    }
+    
+    public function testRemoveByValueArray()
+    {
+        $array = [['star','wars'],['star','trek'],['star','gate']];
+        $result = Arrays::removeByValue($array, ['star','trek']);
+        $this->assertNotContains(['star','trek'], $result);
+        $this->assertContains(['star','wars'], $result);
+        $this->assertContains(['star','gate'], $result);
+    }
+
+    public function testMultipleRemoveByValueArray()
+    {
+        $array = [['star','wars'],['star','trek'],['star','gate']];
+        $result = Arrays::removeByValue($array, ['star','trek'], ['star','wars']);
+        $this->assertNotContains(['star','trek'], $result);
+        $this->assertNotContains(['star','wars'], $result);
+        $this->assertContains(['star','gate'], $result);
+    }
+
+    public function testRemoveByValueMixed()
+    {
+        $array = [
+            22,
+            'star wars',
+            ['test' => 'value'],
+            'far' => 'scape',
+        ];
+        $result = Arrays::removeByValue($array, 'scape');
+        $this->assertNotContains('scape', $result);
+        $this->assertContains('star wars', $result);
+        $this->assertContains(['test' => 'value'], $result);
+        $this->assertContains(22, $result);
+    }
+
+    public function testMultipleRemoveByValueMixed()
+    {
+        $array = [
+            22,
+            'star wars',
+            ['test' => 'value'],
+            'far' => 'scape',
+        ];
+        $result = Arrays::removeByValue($array, 'scape', ['test' => 'value']);
+        $this->assertNotContains('scape', $result);
+        $this->assertNotContains(['test' => 'value'], $result);
+        $this->assertContains('star wars', $result);
+        $this->assertContains(22, $result);
     }
 }
