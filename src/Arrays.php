@@ -109,4 +109,31 @@ class Arrays
 
         return true;
     }
+
+    /**
+     * This removes all falsey values from an array.
+     *
+     * By default `null` evaluates as falsey. To include `null` values, pass `true` to the second argument.
+     *
+     * @param array $array
+     * @param bool  $treatNullAsTrue
+     * @return array
+     */
+    public static function compact(array $array, bool $treatNullAsTrue = false)
+    {
+        $compacted = array();
+        foreach ($array as $key => $field) {
+            if (true === $treatNullAsTrue) {
+                if ($field || null === $field) {
+                    $compacted[$key] = $field;
+                }
+            } else {
+                if ($field) {
+                    $compacted[$key] = $field;
+                }
+            }
+        }
+
+        return $compacted;
+    }
 }

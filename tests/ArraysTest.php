@@ -2,7 +2,7 @@
 
 use \PHPUnit\Framework\TestCase;
 
-class StringTest extends TestCase
+class ArrayTest extends TestCase
 {
     /**
      * @Strings::pluck()
@@ -84,5 +84,30 @@ class StringTest extends TestCase
         $this->assertFalse(Arrays::isEmpty($test1));
         $this->assertFalse(Arrays::isEmpty($test2));
         $this->assertFalse(Arrays::isEmpty($test3));
+    }
+
+    public function testArrayCompact()
+    {
+        $test1 = [
+          'star',
+          'wars',
+          'trek',
+        ];
+        $test2 = [
+            'star',
+            'wars',
+            'trek',
+            false,
+        ];
+        $test3 = [
+            'star',
+            'wars',
+            'trek',
+            null,
+        ];
+        $this->assertEquals($test1, Arrays::compact($test1), "False positives are removing non-false fields.");
+        $this->assertEquals($test1, Arrays::compact($test2), "Did not remove literal `false` value.");
+        $this->assertEquals($test1, Arrays::compact($test3), "Did not remove literal `null` value.");
+        $this->assertEquals(4, count(Arrays::compact($test3, true)), "Null not accurately considered not false.");
     }
 }
