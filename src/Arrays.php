@@ -5,12 +5,12 @@ class Arrays
     /**
      * Recursive function to get things from deep in multi-dimensional
      * arrays.
-     * 
+     *
      * $directions should initially be an array (otherwise we wouldn't)
      * need this function. Each item in the array should be the key of
      * an element that is the child of the value returned by the preceeding
      * element.
-     * 
+     *
      * So with the following array:
      * ```
      * $array = [
@@ -22,9 +22,9 @@ class Arrays
      *      ]
      * ];
      * ```
-     * 
-     * Calling `Arrays::pluck($array, ['top', 'middle2', 'final'])` would 
-     * return `this is it!`, while calling `Arrays::pluck($array, ['top', 'middle1'])` 
+     *
+     * Calling `Arrays::pluck($array, ['top', 'middle2', 'final'])` would
+     * return `this is it!`, while calling `Arrays::pluck($array, ['top', 'middle1'])`
      * would return `hello`.
      *
      * @param array $array                      The array to pluck from.
@@ -65,7 +65,8 @@ class Arrays
      * @param array|mixed $array
      * @return array
      */
-    public static function flatten($array) {
+    public static function flatten($array)
+    {
         if (!is_array($array)) {
             // nothing to do if it's not an array
             return array($array);
@@ -82,11 +83,11 @@ class Arrays
 
     /**
      * Tests if an array is empty.
-     * 
+     *
      * "Empty" here means that every element contains either an
      * empty string, or the value `null`. Other values that would
-     * be considered `empty` by the `empty()` function are *not* 
-     * considered as such here. That means that the array 
+     * be considered `empty` by the `empty()` function are *not*
+     * considered as such here. That means that the array
      * ```
      * ['', null, false]
      * ```
