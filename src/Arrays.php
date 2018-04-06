@@ -32,16 +32,16 @@ class Arrays
      * believe they had successfully retrieved an array item that had the
      * explicity value of `null`. It is therefore recommended to keep $safe off.
      *
-     * @param array $array                    The array to pluck from.
+     * @param array            $array         The array to pluck from.
      * @param array|string|int $directions    Directions to the element we want.
-     * @param boolean $safe                   Whether or not to throw an error.
+     * @param boolean          $safe          Whether or not to throw an error.
      * @return mixed                          Returns whatever the value is (can
      *                                        be anything).
      */
     public static function pluck(array $array, $directions, $safe = false)
     {
         if ((is_string($directions)
-            || is_int($directions))
+                || is_int($directions))
             && isset($array[$directions])) {
             // If $directions is a key, just return the value for that key.
             return $array[$directions];
@@ -64,10 +64,10 @@ class Arrays
             return null;
         } else {
             return new ZenodorusError([
-                'code' => "pluck::not-found",
+                'code'        => "pluck::not-found",
                 'description' => "Arrays::pluck() could not find the value 
                     you're looking for.",
-                'data' => ['array' => $array, 'directions' => $directions],
+                'data'        => ['array' => $array, 'directions' => $directions],
             ]);
         }
     }
@@ -85,13 +85,13 @@ class Arrays
             // nothing to do if it's not an array
             return array($array);
         }
-    
+
         $result = array();
         foreach ($array as $value) {
             // explode the sub-array, and add the parts
             $result = array_merge($result, static::flatten($value));
         }
-    
+
         return $result;
     }
 
@@ -151,6 +151,7 @@ class Arrays
 
         return $compacted;
     }
+
     /**
      * Remove items from an array based on their value. Keys are not changed.
      *
@@ -173,5 +174,44 @@ class Arrays
         }
 
         return $array;
+    }
+
+    /**
+     * array_map with keys OR array_walk but functional
+     *
+     * The called function receives two arguments: `$key` & `$value`.
+     *
+     * If the called function returns an array with a single value, that single value will be inserted into the new
+     * array at the position of the original key.
+     *
+     * If the called function returns an array with two values, the first value used as a *new* key in the new array,
+     * and second value is used as the value in the new array.
+     *
+     * **WARNING**
+     *
+     * And returns value other than an array with one or two values will be ignored! This can be useful (i.e. to
+     * clean up an array) but you should be aware of it.
+     *
+     * @param callable $function
+     * @param array    $array
+     * @return array
+     */
+    public static function mapKeys(callable $function, array $array)
+    {
+        $new_array = array();
+        foreach ($array as $key => $value) {
+            $result = call_user_func($function, $value, $key);
+            if (is_array($result)) {
+                if (1 === count($result)) {
+                    // Only returned a value, no key, so keep existing key.
+                    $new_array[$key] = array_shift($result);
+                } elseif (2 === count($result)) {
+                    // Returned a key and a value, so set a new key.
+                    $new_array[array_shift($result)] = array_shift($result);
+                }
+            }
+            unset($result);
+        }
+        return $new_array;
     }
 }
