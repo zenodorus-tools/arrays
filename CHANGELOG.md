@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.2.1] - 2018-07-02
+
+### Fixed
+
+- Removed VS Code files.
+
 ## [1.2.0] - 2018-04-06
 
 ### Added
